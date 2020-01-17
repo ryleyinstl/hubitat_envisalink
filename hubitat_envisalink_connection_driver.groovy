@@ -54,6 +54,7 @@ metadata {
         attribute   "Codes", "json"
         attribute   "LastUsedCodePosition", "string"
         attribute   "LastUsedCodeName", "string"
+	attribute   "AlarmMode", "string"	
 	}
 
 	preferences {
@@ -754,6 +755,7 @@ private partitionDisarmed(){
     ifDebug("partitionDisarmed")
     sendEvent(name:"Status", value: PARTITIONDISARMED)
     sendEvent(name: "switch", value: "off")
+    sendEvent(name: "AlarmMode", value: "Home")
     if (state.armState != "disarmed"){
 		ifDebug("disarming")
 		state.armState = "disarmed"
@@ -772,6 +774,7 @@ private partitionArmedAway(){
     ifDebug("partitionArmedAway")
     sendEvent(name:"Status", value: PARTITIONARMEDAWAY)
     sendEvent(name: "switch", value: "on")
+    sendEvent(name: "AlarmMode", value: "Away")
     if (state.armState.contains("home")){
         systemArmedHome()
     }else {
@@ -783,6 +786,7 @@ private partitionArmedHome(){
     ifDebug("partitionArmedHome")
     sendEvent(name:"Status", value: PARTITIONARMEDHOME)
     sendEvent(name: "switch", value: "on")
+    sendEvent(name: "AlarmMode", value: "Stay")
     if (state.armState.contains("home")){
         systemArmedHome()
     }else {
