@@ -747,6 +747,7 @@ private partitionReadyForForcedArmEnabled(){
 private partitionAlarm(){
     ifDebug("partitionAlarm")
     sendEvent(name:"Status", value: PARTITIONINALARM)
+    sendEvent(name: "AlarmMode", value: "ALARM! ALARM!")
     state.armState = "alarming"
 	parent.speakAlarm()
 }
