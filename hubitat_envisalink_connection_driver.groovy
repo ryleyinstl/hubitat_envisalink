@@ -1069,7 +1069,7 @@ private partitionDisarmed(){
 	send_Event(name:"Status", value: PARTITIONDISARMED)
 	send_Event(name: "switch", value: "off")
 	send_Event(name:"contact", value: "closed")
-	sendEvent(name: "AlarmMode", value: "Home")
+	sendEvent(name: "AlarmMode", value: "Home/Disarmed")
 	if (state.armState != "disarmed"){
 		ifDebug("disarming")
 		state.armState = "disarmed"
